@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T04:28:57.821Z",
+  "words": 131627,
+  "categories": {
+    "politics": 7072,
+    "porn": 552,
+    "violence": 612,
+    "ad": 14704,
+    "other": 9422,
+    "mixed": 99265
+  },
+  "sources": [
+    {
+      "id": "konsheng",
+      "repo": "konsheng/Sensitive-lexicon",
+      "sha": "d967c30b053fa40b06c5a0dddf0be493f2dfae46",
+      "ok": true,
+      "words": 73676
+    },
+    {
+      "id": "tencent",
+      "repo": "cjh0613/tencent-sensitive-words",
+      "sha": "aeeab4358bed903f2a9adade9e687ac6266d9539",
+      "ok": true,
+      "words": 0
+    },
+    {
+      "id": "houbb",
+      "repo": "houbb/sensitive-word",
+      "sha": "b86249ddfa381b426359a420623486e099c2092d",
+      "ok": true,
+      "words": 57951
+    }
+  ],
+  "sha256": "5469452bad733c52f21bf7d765b1a53337ce6906f869b8deb1d60fc76c77f990"
+}

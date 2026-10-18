@@ -1,0 +1,50 @@
+{
+  "pack": { "magic": "SVPX", "format": 1, "keyBytes": 16 },
+  "rules": { "minLen": 2, "maxLen": 64 },
+  "sources": [
+    {
+      "id": "konsheng",
+      "repo": "konsheng/Sensitive-lexicon",
+      "branch": "main",
+      "license": "MIT",
+      "files": [
+        { "path": "Vocabulary/政治类型.txt", "category": "politics" },
+        { "path": "Vocabulary/反动词库.txt", "category": "politics" },
+        { "path": "Vocabulary/贪腐词库.txt", "category": "politics" },
+        { "path": "Vocabulary/GFW补充词库.txt", "category": "politics" },
+        { "path": "Vocabulary/色情类型.txt", "category": "porn" },
+        { "path": "Vocabulary/色情词库.txt", "category": "porn" },
+        { "path": "Vocabulary/暴恐词库.txt", "category": "violence" },
+        { "path": "Vocabulary/涉枪涉爆.txt", "category": "violence" },
+        { "path": "Vocabulary/广告类型.txt", "category": "ad" },
+        { "path": "Vocabulary/非法网址.txt", "category": "ad" },
+        { "path": "Vocabulary/COVID-19词库.txt", "category": "other" },
+        { "path": "Vocabulary/其他词库.txt", "category": "other" },
+        { "path": "Vocabulary/新思想启蒙.txt", "category": "other" },
+        { "path": "Vocabulary/民生词库.txt", "category": "other" },
+        { "path": "Vocabulary/网易前端过滤敏感词库.txt", "category": "other" },
+        { "path": "Vocabulary/补充词库.txt", "category": "other" },
+        { "path": "Vocabulary/零时-Tencent.txt", "category": "mixed" }
+      ]
+    },
+    {
+      "id": "tencent",
+      "repo": "cjh0613/tencent-sensitive-words",
+      "branch": "main",
+      "license": "MIT",
+      "note": "与 konsheng 零时-Tencent 同源，作互备监控",
+      "files": [
+        { "path": "sensitive_words_lines.txt", "category": "mixed" }
+      ]
+    },
+    {
+      "id": "houbb",
+      "repo": "houbb/sensitive-word",
+      "branch": "master",
+      "license": "Apache-2.0",
+      "files": [
+        { "path": "src/test/resources/dict_v20240407.txt", "category": "mixed" }
+      ]
+    }
+  ]
+}
