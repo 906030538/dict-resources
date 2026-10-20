@@ -140,16 +140,13 @@ function renderReport(sources, r, cfg) {
     L.push(`| ${s.id} | ${s.repo} | ${s.sha ? s.sha.slice(0, 9) : '-'} | ${s.ok ? '✓' : '✗ ' + (s.error ?? '')} | ${s.words ?? '-'} |`);
   const sample = (obj, title) => {
     L.push('', `## ${title}`, '');
-    let any = false;
-    for (const [c, words] of Object.entries(obj)) {
-      if (!words.length) continue;
-      any = true;
-      L.push(`### ${c} (${words.length})`, '');
-      L.push('```', ...words.slice(0, 10), words.length > 10 ? `... and ${words.length - 10} more` : '', '```', '');
-    }
-    if (!any) L.push('(none)', '');
+    const entries = Object.entries(obj).filter(([, words]) => words.length);
+    if (!entries.length) { L.push('(none)', ''); return; }
+    // 敏感词不进报告（PR diff 明文可见）——只出分类计数，抽查走本地解包
+    L.push(`| category | count |`, `|---|---|`);
+    for (const [c, words] of entries) L.push(`| ${c} | ${words.length} |`);
+    L.push('');
   };
-  L.push('> ⚠️ 样例词条仅供私有仓内人工审阅，勿转发公开。');
   sample(r.added, 'added');
   sample(r.removed, 'removed');
   return L.join('\n') + '\n';

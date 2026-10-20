@@ -1,6 +1,6 @@
 # sync report
 
-- time: 2026-10-15T04:44:08.218Z
+- time: 2026-10-20T14:23:25.424Z
 - words: 131627 -> 131627 (no change)
 
 ## sources
@@ -10,7 +10,6 @@
 | konsheng | konsheng/Sensitive-lexicon | d967c30b0 | ✓ | 73676 |
 | tencent | cjh0613/tencent-sensitive-words | aeeab4358 | ✓ | 0 |
 | houbb | houbb/sensitive-word | b86249ddf | ✓ | 57951 |
-> ⚠️ 样例词条仅供私有仓内人工审阅，勿转发公开。
 
 ## added
 
