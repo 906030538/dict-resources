@@ -1,6 +1,6 @@
 # sync report
 
-- time: 2026-10-20T14:23:25.424Z
+- time: 2026-10-26T08:31:37.264Z
 - words: 131627 -> 131627 (no change)
 
 ## sources
