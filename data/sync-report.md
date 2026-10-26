@@ -1,7 +1,8 @@
 # sync report
 
-- time: 2026-10-20T14:23:25.424Z
-- words: 131627 -> 131627 (no change)
+- time: 2026-10-26T19:56:37.546Z
+- words: 131627 -> 131625 (changed)
+- allowlist: 出厂前移除领域误伤词 2 个（分类明细见 pack-meta.json，词不进 diff）
 
 ## sources
 
@@ -18,5 +19,8 @@
 
 ## removed
 
-(none)
+| category | count |
+|---|---|
+| porn | 1 |
+| mixed | 1 |
 
