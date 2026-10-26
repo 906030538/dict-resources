@@ -78,11 +78,26 @@ function main() {
   }
 
   const flat = Object.fromEntries(Object.entries(items).map(([c, m]) => [c, [...m.keys()].sort()]));
-  const totalNew = Object.values(flat).reduce((s, a) => s + a.length, 0);
-  console.log(`[trim] done: ${totalNew} words`);
+  console.log(`[trim] done: ${Object.values(flat).reduce((s, a) => s + a.length, 0)} words`);
+
+  // 1.5 白名单剔除：领域误伤词出厂前移除（归一化精确匹配，与消费侧打分归一化同口径）
+  const norm = (w) => w.normalize('NFKC').toLowerCase();
+  const allowSet = new Set(JSON.parse(readFileSync(join(ROOT, 'allowlist.json'), 'utf8')).words.map(norm));
+  const allowRemoved = {};
+  for (const [c, arr] of Object.entries(flat)) {
+    const kept = arr.filter((w) => {
+      if (allowSet.has(norm(w))) { allowRemoved[c] = (allowRemoved[c] ?? 0) + 1; return false; }
+      return true;
+    });
+    flat[c] = kept;
+  }
+  const allowRemovedTotal = Object.values(allowRemoved).reduce((s, n) => s + n, 0);
+  const totalKept = Object.values(flat).reduce((s, a) => s + a.length, 0);
+  if (allowRemovedTotal) console.log(`[allowlist] removed ${allowRemovedTotal} words (${JSON.stringify(allowRemoved)}), kept ${totalKept}`);
+  const totalNew = totalKept; // 剔除后的净计数（report/meta/日志统一口径）
 
   // 2. 与当前包对比
-  let report = { added: {}, removed: {}, totalOld: 0, totalNew, unchanged: false };
+  let report = { added: {}, removed: {}, totalOld: 0, totalNew, unchanged: false, allowRemoved: allowRemovedTotal };
   if (existsSync(PACK_PATH)) {
     const old = unpack(readFileSync(PACK_PATH)).items;
     report.totalOld = Object.values(old).reduce((s, a) => s + a.length, 0);
@@ -120,6 +135,7 @@ function main() {
     generatedAt: nowIso(),
     words: totalNew,
     categories: Object.fromEntries(Object.entries(flat).map(([c, a]) => [c, a.length])),
+    allowlist: { removed: allowRemovedTotal, byCategory: allowRemoved },
     sources: sourceStatus.map(({ id, repo, sha, ok, words, error }) => ({ id, repo, sha, ok, words, error })),
     sha256: createHash('sha256').update(buf).digest('hex'),
   };
@@ -133,6 +149,7 @@ function renderReport(sources, r, cfg) {
   const L = [];
   L.push(`# sync report`, '', `- time: ${nowIso()}`);
   L.push(`- words: ${r.totalOld} -> ${r.totalNew} (${r.unchanged ? 'no change' : 'changed'})`);
+  if (r.allowRemoved) L.push(`- allowlist: 出厂前移除领域误伤词 ${r.allowRemoved} 个（分类明细见 pack-meta.json，词不进 diff）`);
   if (r.baseline) L.push(`- baseline: 首次构建，无历史包对比`);
   L.push('');
   L.push(`## sources`, '', `| id | repo | sha | ok | words |`, `|---|---|---|---|---|`);
