@@ -1,8 +1,8 @@
 # sync report
 
-- time: 2026-10-26T19:56:37.546Z
-- words: 131627 -> 131625 (changed)
-- allowlist: 出厂前移除领域误伤词 2 个（分类明细见 pack-meta.json，词不进 diff）
+- time: 2026-10-27T20:18:12.222Z
+- words: 131625 -> 131619 (changed)
+- allowlist: 出厂前移除领域误伤词 8 个（分类明细见 pack-meta.json，词不进 diff）
 
 ## sources
 
@@ -21,6 +21,7 @@
 
 | category | count |
 |---|---|
-| porn | 1 |
-| mixed | 1 |
+| politics | 1 |
+| other | 3 |
+| mixed | 2 |
 
