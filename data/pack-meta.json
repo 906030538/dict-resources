@@ -1,20 +1,22 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-26T19:56:37.545Z",
-  "words": 131625,
+  "generatedAt": "2026-10-27T20:18:12.220Z",
+  "words": 131619,
   "categories": {
-    "politics": 7072,
+    "politics": 7071,
     "porn": 551,
     "violence": 612,
     "ad": 14704,
-    "other": 9422,
-    "mixed": 99264
+    "other": 9419,
+    "mixed": 99262
   },
   "allowlist": {
-    "removed": 2,
+    "removed": 8,
     "byCategory": {
+      "politics": 1,
       "porn": 1,
-      "mixed": 1
+      "other": 3,
+      "mixed": 3
     }
   },
   "sources": [
@@ -40,5 +42,5 @@
       "words": 57951
     }
   ],
-  "sha256": "b78b3ec5a15e06ea23c9ad350415135e13c0ca1a23f824198e095c722954f6ee"
+  "sha256": "889e1e12c5f27b1868257013ea2f45e1081d519354813374b58995978474f1f1"
 }
