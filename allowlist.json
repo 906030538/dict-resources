@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "_doc": "领域误伤白名单：打包时按归一化精确匹配从词表中剔除（出厂即净，消费侧零遮蔽逻辑）。覆盖音乐/调音圈标准术语——上游词库将「调教」归 porn、「工作室」归 mixed 等是领域误配。更新走 sync PR 一起人审。",
+  "_doc": "领域误伤白名单：打包时按归一化精确匹配从词表中剔除（出厂即净，消费侧零遮蔽逻辑）。覆盖两类——音乐/调音圈标准术语（上游词库将「调教」归 porn、「工作室」归 mixed 等是领域误配）；以及索引仓敏感扫描门禁（SectorVaultProject scripts/check-sensitive.mjs）实测校准识别的通用词/平台名/基础设施 token（youtube 在 politics/GFW 名单但视频链接是站点核心功能、party 是通用英文词、www 是链接噪声、关系密切是民生常用语）。更新走 sync PR 一起人审。",
   "words": [
     "调音", "调声", "调教", "调参", "代调", "翻调", "调音台", "调音师",
     "接单", "约稿", "稿件", "稿费", "工作室", "工程师",
@@ -13,6 +13,7 @@
     "f0", "utahe", "synthv", "svp", "vocaloid", "deepvocal", "diffsinger",
     "openutau", "utau", "voicevox", "ace studio", "x studio",
     "初音", "初音未来", "镜音", "巡音", "洛天依", "乐正绫", "乐正龙牙",
-    "徵羽摩柯", "墨清弦", "星尘", "江上晔", "flower", "miku", "luka", "gumi"
+    "徵羽摩柯", "墨清弦", "星尘", "江上晔", "flower", "miku", "luka", "gumi",
+    "youtube", "www", "party", "关系密切"
   ]
 }
